@@ -15,21 +15,30 @@ module.exports = function(sequelize, dataTypes) {
         },
         descripcion: {
             type: dataTypes.STRING
+        },
+        id_usuario: {
+            type: dataTypes.INTEGER
         }
     }
 
     /* config de la tabla */
     let config = {
-        tableName: "usuarios",
+        tableName: "productos",
         timestamps: false,
         underscored: false
     }
 
     /* definir el modelo */
 
-    let Usuario = sequelize.define(alias, cols, config)
+    let Producto = sequelize.define(alias, cols, config)
 
+    Producto.associate = function(models) {
+        Producto.belongsTo(models.Usuario , {
+            as: "usuario",             
+            foreignKey: "id_usuario"   
+        })
+    }
     
-    return Usuario;
+    return Producto;
 }
 
