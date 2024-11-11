@@ -68,7 +68,7 @@ hr {
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  background-color: var(--yellow);
+  background-color: beige;
 }
 
 .main-header_home-link,
@@ -259,7 +259,7 @@ hr {
 
 /*====== Footer ======*/
 .main-footer {
-  background-color: #ffffff;
+  background-color: beige;
   padding: 20px 0;
   margin-top: 80px;
 }
@@ -296,6 +296,12 @@ hr {
   padding: 15px 0;
 }
 
+.nombres {
+  font-size: 1.5em;
+  font-weight: 400;
+  text-align: center;
+  color: var(--gray);
+}
 
 /*====== Product Detail ======*/
 .product-detail {

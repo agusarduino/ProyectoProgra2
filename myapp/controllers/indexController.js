@@ -1,3 +1,4 @@
+const db = require('')
 
 const indexController = {
     index: (req, res) => {
