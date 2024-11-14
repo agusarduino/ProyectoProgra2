@@ -23,14 +23,6 @@ const indexController = {
             return console.log(error);
            })
     },
-    img: (req, res) => {
-      let productoEncontradoId = req.params.id;
-
-      if (productoEncontradoId == 1) {
-        let imagenProducto = "img-tv-samsung-smart.jpg";
-        res.render("index", {imagen: imagenProducto})
-      }
-    }
 };
 
 module.exports = indexController;
