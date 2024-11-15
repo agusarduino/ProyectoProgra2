@@ -6,7 +6,12 @@ const userController = {
         return res.render("register")
     },
     login: (req, res)=>{
-        return res.render("login")
+            if (req.body.user == ""){
+                return res.send("El campo de email no puede estar vacio")
+            }
+            else{
+                return res.render("login")
+            }
     },
     loginUser: (req, res) => {
         let form = req.body;
