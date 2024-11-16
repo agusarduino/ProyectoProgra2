@@ -2,22 +2,32 @@ const db = require('../database/models');
 const bcryptjs = require('bcryptjs');
 
 const userController = {
-    register: (req, res)=>{
+    register: (req, res) => {
         return res.render("register")
     },
-    login: (req, res)=>{
-            if (req.body.user == ""){
-                return res.send("El campo de email no puede estar vacio")
-            }
-            else{
-                return res.render("login")
-            }
+    
+    login: (req, res) => {
+        const { email, password } = req.body;
+        let errors = [];
+        if (!email) {
+            errors.push('El email es obligatorio.');
+        }
+        else if (!password) {
+            errors.push('La contraseña es obligatoria.');
+        }
+        if (errors.length > 0) {
+            return res.render('login', {
+                errors,
+                email,
+                password
+            });
+        }
     },
     loginUser: (req, res) => {
         let form = req.body;
 
         let filtro = {
-            where:{
+            where: {
                 email: form.email
             }
         };
@@ -30,14 +40,14 @@ const userController = {
         let pass = bcryptjs.hashSync(form.password, 10);
 
         form.password = pass;
-       
+
         db.User.create(form)
-        .then((result) => {
-            return res.redirect("/users/login")
-        })
-        .catch((err) => {
-            return console.log(err);
-        });
+            .then((result) => {
+                return res.redirect("/users/login")
+            })
+            .catch((err) => {
+                return console.log(err);
+            });
     },
     logout: (req, res) => {
         req.session.destroy()
