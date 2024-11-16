@@ -1,10 +1,20 @@
+const { Association } = require('sequelize');
 const db = require('../database/models');
 
 const producto = db.Producto;
 
 const indexController = {
     index: (req, res) => {
-        producto.findAll()
+        let filtro = {
+            //include: [
+                //{association: 'usuario'}
+            //], arreglar pq no anda
+            order: [
+                ['createdAt', 'DESC']
+            ]
+        };
+
+        producto.findAll(filtro)
             .then((producto) => {
                 res.render('index', { producto: producto });
             })
