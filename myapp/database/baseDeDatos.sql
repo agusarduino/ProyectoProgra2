@@ -7,7 +7,7 @@ CREATE TABLE usuarios (
     nombre 			VARCHAR(100),
     apellido 		VARCHAR(100),
     email 			VARCHAR(100),
-    contraseña 		VARCHAR(100),
+    contrasena 		VARCHAR(100),
     
     createdAt 		TIMESTAMP 		DEFAULT CURRENT_TIMESTAMP,
     updatedAt 		TIMESTAMP 		DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
