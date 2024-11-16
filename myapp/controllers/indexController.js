@@ -33,6 +33,9 @@ const indexController = {
             return console.log(error);
            })
     },
+    add: (req, res) => {
+        
+    }
     
 };
 
