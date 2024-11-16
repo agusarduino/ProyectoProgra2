@@ -23,7 +23,7 @@
 			<div class="row align-items-center">
 				<div class="col-5 col-md-2">
 					<a href="/" class="main-header_home-link">
-						<img src="./images/logo-mercado-liebre.svg">
+						<img src="/images/logo-mercado-liebre.svg">
 					</a>
 				</div>
 	
@@ -49,7 +49,7 @@
 	
 			<nav class="main-navbar">
 				<ul class="left-navbar">
-					<li><a href="index.html">Todos los productos</a></li>
+					<li><a href="/">Todos los productos</a></li>
 					<!-- solo logueado <li><a href="">Cargar productos</a></li> -->
 				</ul>
 			
@@ -87,10 +87,27 @@
 				<h2 class="products-title">Ingresar</h2>
 			</div>
 
-			<h2 class="col-12"> //////////////////////////////// <br>
-				Eliminá está etiqueta h2 y creá en su lugar el formulario de login <br>
-			////////////////</h2>
 
+
+			<form class="form" action="/users/login" method="POST" >
+			 
+				<div>
+					<label class="form-label"> Ingrese su Email </label>
+					<input id="email" class="textarea form-input" type="email" name="email" placeholder="Email" />
+				</div>
+
+				<br>
+		
+				<div>
+					<label class = "form-label">Ingrese su contraseña </label>
+					<input id="password" class="textarea form-input" type="password" name="password" placeholder="Clave" />
+				</div>
+		
+				<br>
+
+				<button type="text" class="form-input">Ingresar</button>
+			</form>
+	</div>
 
 	<!-- footer -->
 	<footer class="main-footer">
