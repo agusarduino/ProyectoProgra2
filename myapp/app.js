@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -18,6 +19,35 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// LO DE MILI
+app.use(session({ 
+  secret: "myapp",
+  resave: false,
+  saveUninitialized: true  
+}));
+
+app.use(function (req, res, next) {
+  res.locals = {
+    usuarioLogueado: req.session.usuarioLogueado
+  }
+  return next();
+})
+
+app.use(function (req, res, next) {
+
+  if (req.cookies.idUsuario != undefined && req.session.usuarioLogueado == undefined) {
+    db.Usuario.findByPk(req.cookies.idUsuario)
+      .then(function (user) {
+        req.session.usuarioLogueado = user;
+        res.locals.usuarioLogueado = user
+        return next()
+      })
+  } else {
+    return next();
+  }
+})
+// HASTA ACA
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
