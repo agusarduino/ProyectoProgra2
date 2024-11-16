@@ -23,7 +23,7 @@
 			<div class="row align-items-center">
 				<div class="col-5 col-md-2">
 					<a href="/" class="main-header_home-link">
-						<img src="../public/images/logo-mercado-liebre.jpg">
+						<img src="/images/logo-mercado-liebre.svg">
 					</a>
 				</div>
 	
@@ -86,19 +86,27 @@
 			<div class="col-12">
 				<h2 class="products-title">Log In</h2>
 			</div>
-				
-			</div>
-			<form class="form-label" action="/users/login" method="post" >  
-				<div class="form-input ic1">
-					<input id="email" class="textarea.form-input" type="email" placeholder="email" name="email" />
+
+
+			<form class="form" action="/users/login" method="POST" >
+			 
+				<div>
+					<label class="form-label"> Ingrese su Email </label>
+					<input id="email" class="textarea form-input" type="email" name="email" placeholder="Email" />
+				</div>
+
+				<br>
+		
+				<div>
+					<label class = "form-label">Ingrese su contraseña </label>
+					<input id="password" class="textarea form-input" type="password" name="password" placeholder="Clave" />
 				</div>
 		
-				<div class="form-input ic1">
-					<input id="password" class="textarea.form-input" type="password" placeholder="clave" name="password" />
-				</div>
-				<button type="submit" class="submit">Ingresar</button>
-			  </form>
+				<br>
 
+				<button type="text" class="form-input">Ingresar</button>
+			</form>
+	</div>
 
 	<!-- footer -->
 	<footer class="main-footer">
