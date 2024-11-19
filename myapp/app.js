@@ -20,34 +20,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// LO DE MILI
-app.use(session({ 
-  secret: "myapp",
+app.use(session({
+  secret: 'myapp',
   resave: false,
-  saveUninitialized: true  
+  saveUninitialized: true
 }));
 
-app.use(function (req, res, next) {
-  res.locals = {
-    usuarioLogueado: req.session.usuarioLogueado
-  }
-  return next();
-})
+app.use(function(req, res, next){
+  if (req.session.user != undefined) {
+    res.locals.user = req.session.user;
+  };
 
-app.use(function (req, res, next) {
-
-  if (req.cookies.idUsuario != undefined && req.session.usuarioLogueado == undefined) {
-    db.Usuario.findByPk(req.cookies.idUsuario)
-      .then(function (user) {
-        req.session.usuarioLogueado = user;
-        res.locals.usuarioLogueado = user
-        return next()
-      })
-  } else {
-    return next();
-  }
-})
-// HASTA ACA
+  return next()
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

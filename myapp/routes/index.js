@@ -8,4 +8,6 @@ router.get('/', indexController.index);
 
 router.get('/detalleproducto/:id', indexController.detalle);
 
+router.get('/busqueda', indexController.busqueda);
+
 module.exports = router;
