@@ -1,14 +1,15 @@
 const { Association } = require('sequelize');
 const db = require('../database/models');
+const op = db.Sequelize.Op;
 
 const producto = db.Producto;
 
 const indexController = {
     index: (req, res) => {
         let filtro = {
-            //include: [
-                //{association: 'usuario'}
-            //], arreglar pq no anda
+            include: [
+                {association: 'usuario'}
+            ], 
             order: [
                 ['createdAt', 'DESC']
             ]
@@ -33,10 +34,25 @@ const indexController = {
             return console.log(error);
            })
     },
-    add: (req, res) => {
-        
+    busqueda: (req, res) => {
+        let queryString = req.query.producto;
+
+        producto.findAll({
+            where: [
+                {nombre: { [op.like]: `%${queryString}%` }}
+            ],
+            order: [
+                ['createdAt', 'DESC']
+            ]
+        })
+            .then((resultados) => {
+                return res.render('searchResults', {producto: resultados})
+            })
+            .catch((error) => {
+                return console.log(error)
+            });
+
     }
-    
 };
 
 module.exports = indexController;
