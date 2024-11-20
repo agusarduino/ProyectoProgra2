@@ -31,11 +31,10 @@ const userController = {
     
                 if (result != undefined) {
     
-                    let validarClave = bcryptjs.compareSync( form.password , result.password);
+                    let validarClave = bcryptjs.compareSync(form.password , result.password);
                     
                     if (validarClave) {
                         req.session.user = result.dataValues;
-    
                         return res.redirect("/");
                     } else {
                         return res.send("Clave incorrecta");
