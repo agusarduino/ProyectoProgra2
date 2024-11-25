@@ -54,6 +54,15 @@ const productController = {
     },
     saveForm: (req, res) => {
         let form = req.body;
+
+        if (!form.urlImagen) {
+            return res.send('El campo "URL de la imagen" no puede estar vacío.');
+        } else if (!form.nombre) {
+            return res.send('El campo "Nombre" no puede estar vacío.');
+        } else if (!form.descripcion) {
+            return res.send('El campo "Descripción" no puede estar vacío.');
+        }; 
+
         form.id_usuario = req.session.user.id;
 
         let filtro = {

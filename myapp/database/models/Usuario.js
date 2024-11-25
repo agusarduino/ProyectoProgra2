@@ -1,4 +1,4 @@
-module.exports = function(sequelize, dataTypes) {
+module.exports = function (sequelize, dataTypes) {
 
     /* alias */
     let alias = "Usuario";
@@ -16,7 +16,7 @@ module.exports = function(sequelize, dataTypes) {
         apellido: {
             type: dataTypes.STRING
         },
-        email:{
+        email: {
             type: dataTypes.STRING
         },
         contrasena: {
@@ -35,13 +35,13 @@ module.exports = function(sequelize, dataTypes) {
 
     let Usuario = sequelize.define(alias, cols, config)
 
-    Usuario.associate = function(models) {
-        Usuario.hasMany(models.Producto , {
-            as: "productos",          
-            foreignKey: "id_usuario"   
+    Usuario.associate = function (models) {
+        Usuario.hasMany(models.Producto, {
+            as: "productos",
+            foreignKey: "id_usuario"
         })
     }
-    
+
     return Usuario;
 };
 

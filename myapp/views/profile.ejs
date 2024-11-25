@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- Include Head -->
-<%- include('partials/head.ejs')  %>
-<body>
-    <!-- Header -->
-	<% if (locals.user != undefined) { %>
-		<%- include('./partials/headerLogueado') %>
-	<% } else { %>
-		<%- include('./partials/header') %>
-	<% } %>
-	<!-- /Header -->
-    
-    <h1 class = "products-title"> Perfil de <%= results.nombre %> <%= results.apellido %> </h1>
-	<p class="products-title"> Email: <%= results.email %> </p>
+<%- include('partials/head.ejs') %>
 
-	
-    
+	<body>
+		<!-- Header -->
+		<% if (locals.user !=undefined) { %>
+			<%- include('./partials/headerLogueado') %>
+				<% } else { %>
+					<%- include('./partials/header') %>
+						<% } %>
+							<!-- /Header -->
+
+							<h1 class="products-title"> Perfil de <%= results.nombre %>
+									<%= results.apellido %>
+							</h1>
+							<p class="products-title"> Email: <%= results.email %>
+							</p>
 
 
-    <!-- footer -->
-	<%- include('partials/footer.ejs')  %>
-	<!-- /footer -->
-</body>
+
+
+
+							<!-- footer -->
+							<%- include('partials/footer.ejs') %>
+								<!-- /footer -->
+	</body>
+
 </html>

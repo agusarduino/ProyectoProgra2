@@ -15,66 +15,66 @@ const userController = {
         }
     },
     results: (req, res) => {
-            let form = req.body;
+        let form = req.body;
 
-            if (!form.email) {
-                return res.send('El campo "email" no puede estar vacío.'); 
-            } else if (!form.contrasena) {
-                return res.send('El campo "contraseña" no puede estar vacío.'); 
-            } else if (!form.nombre) {
-                return res.send('El campo "nombre" no puede estar vacío.'); 
-            }
-        
-            db.Usuario.findOne({ where: { email: form.email } })
-                .then(function (results) {
-                    if (results) {
+        if (!form.email) {
+            return res.send('El campo "email" no puede estar vacío.');
+        } else if (!form.contrasena) {
+            return res.send('El campo "contraseña" no puede estar vacío.');
+        } else if (!form.nombre) {
+            return res.send('El campo "nombre" no puede estar vacío.');
+        }
 
-                        return res.send('El email ingresado ya está registrado. Intente con otro.');
-                    }
-        
-                    form.contrasena = bcryptjs.hashSync(req.body.contrasena, 10);
+        db.Usuario.findOne({ where: { email: form.email } })
+            .then(function (results) {
+                if (results) {
 
-                    return db.Usuario.create(form);  
-                })
-                .then(function () {
-                    return res.redirect("/users/login"); 
-                })
-                .catch(function (err) {
-                    console.log("Error al registrar el usuario:", err); 
-                    return res.send("Hubo un problema al registrar el usuario.");
-                });
-        },
-    
+                    return res.send('El email ingresado ya está registrado. Intente con otro.');
+                }
+
+                form.contrasena = bcryptjs.hashSync(req.body.contrasena, 10);
+
+                return db.Usuario.create(form);
+            })
+            .then(function () {
+                return res.redirect("/users/login");
+            })
+            .catch(function (err) {
+                console.log("Error al registrar el usuario:", err);
+                return res.send("Hubo un problema al registrar el usuario.");
+            });
+    },
+
 
     login: (req, res) => {
         if (req.session.user != undefined) {
             return res.redirect('/')
-          };
+        };
         return res.render("login")
 
     },
     loginUser: (req, res) => {
         let form = req.body;
         let filtrado = {
-            where: {email: form.email}
+            where: { email: form.email }
         }
         db.Usuario.findOne(filtrado)
-        .then(function (result) {
-            if (!result){
-                return res.send("No hay un usuario con este mail")
-            }else{
-                let check = bcryptjs.compareSync(form.contrasena,result.contrasena) 
-                if (check) {
-                    req.session.user = result.dataValues; 
-                    return res.redirect("/");
-                } else{
-                    return res.send("La contraseña es incorrecta") 
+            .then(function (result) {
+                if (!result) {
+                    return res.send("No hay un usuario con este mail")
+                } else {
+                    let check = bcryptjs.compareSync(form.contrasena, result.contrasena)
+                    if (check) {
+                        req.session.user = result.dataValues;
+                        return res.redirect("/");
+                    } else {
+                        return res.send("La contraseña es incorrecta")
+                    }
                 }
-            }
-        })
-        .catch(function (err) {
-            console.log(err);    
-        }) 
+            })
+            .catch(function (err) {
+                console.log(err);
+            })
     },
     logout: (req, res) => {
         req.session.destroy()
@@ -87,16 +87,16 @@ const userController = {
         }
 
         let id = req.params.id;
-    
-        
-    
-        db.Usuario.findByPk(id,filtro)
-        .then(function (results) {
-            return res.render("profile", { results: results });
-        })
-        .catch(function (err) {
-            console.log(err);
-        });
+
+
+
+        db.Usuario.findByPk(id, filtro)
+            .then(function (results) {
+                return res.render("profile", { results: results });
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
     },
 };
 

@@ -18,45 +18,47 @@
 
 <body>
 	<!-- Header -->
-	<% if (locals.user != undefined) { %>
+	<% if (locals.user !=undefined) { %>
 		<%- include('./partials/headerLogueado') %>
-	<% } else { %>
-		<%- include('./partials/header') %>
-	<% } %>
-	<!-- /Header -->
+			<% } else { %>
+				<%- include('./partials/header') %>
+					<% } %>
+						<!-- /Header -->
 
-	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Log In</h2>
-			</div>
+						<!-- Novedades -->
+						<div class="container products-wrapper">
+							<div class="row">
+								<div class="col-12">
+									<h2 class="products-title">Log In</h2>
+								</div>
 
 
-			<form class="form" action="/users/login" method="POST" >
-			 
-				<div>
-					<label class="form-label"> Ingrese su Email </label>
-					<input id="email" class="textarea form-input" type="email" name="email" placeholder="Email" />
-				</div>
+								<form class="form" action="/users/login" method="POST">
 
-				<br>
-		
-				<div>
-					<label class = "form-label">Ingrese su contraseña </label>
-					<input id="contrasena" class="textarea form-input" type="password" name="contrasena" placeholder="Clave" />
-				</div>
-		
-				<br>
+									<div>
+										<label class="form-label"> Ingrese su Email </label>
+										<input id="email" class="textarea form-input" type="email" name="email"
+											placeholder="Email" />
+									</div>
 
-				<button type="submit" class="form-input">Ingresar</button>
-			</form>
+									<br>
 
-	</div>
+									<div>
+										<label class="form-label">Ingrese su contraseña </label>
+										<input id="contrasena" class="textarea form-input" type="password"
+											name="contrasena" placeholder="Clave" />
+									</div>
 
-	<!-- footer -->
-	<%- include('partials/footer.ejs')  %>
-	<!-- /footer -->
+									<br>
+
+									<button type="submit" class="form-input">Ingresar</button>
+								</form>
+
+							</div>
+
+							<!-- footer -->
+							<%- include('partials/footer.ejs') %>
+								<!-- /footer -->
 </body>
 
 </html>

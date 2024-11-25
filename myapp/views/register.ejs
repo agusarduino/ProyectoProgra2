@@ -18,56 +18,60 @@
 
 <body>
 	<!-- Header -->
-	<% if (locals.user != undefined) { %>
+	<% if (locals.user !=undefined) { %>
 		<%- include('./partials/headerLogueado') %>
-	<% } else { %>
-		<%- include('./partials/header') %>
-	<% } %>
-	<!-- /Header -->
-
-	
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Registrate</h2>
-			</div>
-			<form class="form" action="/users/register" method="POST" >
-				<div>
-					<label class="form-label"> Ingrese su Usuario </label>
-					<input id="user" class="textarea form-input" type="user" name="nombre" placeholder="Usuario" />
-				</div>
-
-				<br>
-
-				<div>
-					<label class="form-label"> Ingrese su Apellido </label>
-					<input id="apellido" class="textarea form-input" type="apellido" name="apellido" placeholder="apellido" />
-				</div>
-
-				<br>
-
-				<div>
-					<label class="form-label"> Ingrese su Email </label>
-					<input id="email" class="textarea form-input" type="email" name="email" placeholder="Email" />
-				</div>
-
-				<br>
-		
-				<div>
-					<label class = "form-label">Ingrese su contraseña </label>
-					<input id="contrasena" class="textarea form-input" type="contrasena" name="contrasena" placeholder="Clave" />
-				</div>
-		
-				<br>
-
-				<button type="text" class="form-input">Ingresar</button>
-			</form>
-			  
+			<% } else { %>
+				<%- include('./partials/header') %>
+					<% } %>
+						<!-- /Header -->
 
 
-	<!-- footer -->
-	<%- include('partials/footer.ejs')  %>
-	<!-- /footer -->
+						<div class="container products-wrapper">
+							<div class="row">
+								<div class="col-12">
+									<h2 class="products-title">Registrate</h2>
+								</div>
+								<form class="form" action="/users/register" method="POST">
+									<div>
+										<label class="form-label"> Ingrese su Usuario </label>
+										<input id="user" class="textarea form-input" type="user" name="nombre"
+											placeholder="Usuario" />
+									</div>
+
+									<br>
+
+									<div>
+										<label class="form-label"> Ingrese su Apellido </label>
+										<input id="apellido" class="textarea form-input" type="apellido" name="apellido"
+											placeholder="apellido" />
+									</div>
+
+									<br>
+
+									<div>
+										<label class="form-label"> Ingrese su Email </label>
+										<input id="email" class="textarea form-input" type="email" name="email"
+											placeholder="Email" />
+									</div>
+
+									<br>
+
+									<div>
+										<label class="form-label">Ingrese su contraseña </label>
+										<input id="contrasena" class="textarea form-input" type="contrasena"
+											name="contrasena" placeholder="Clave" />
+									</div>
+
+									<br>
+
+									<button type="text" class="form-input">Ingresar</button>
+								</form>
+
+
+
+								<!-- footer -->
+								<%- include('partials/footer.ejs') %>
+									<!-- /footer -->
 </body>
 
 </html>

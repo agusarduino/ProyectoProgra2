@@ -2,53 +2,56 @@
 <html lang="es">
 <!-- Include Head -->
 
-<%- include('partials/head.ejs')  %>
+<%- include('partials/head.ejs') %>
 
-<body>
-	<!-- Header -->
-	<% if (locals.user != undefined) { %>
-		<%- include('./partials/headerLogueado') %>
-	<% } else { %>
-		<%- include('./partials/header') %>
-	<% } %>
-	<!-- /Header -->
+	<body>
+		<!-- Header -->
+		<% if (locals.user !=undefined) { %>
+			<%- include('./partials/headerLogueado') %>
+				<% } else { %>
+					<%- include('./partials/header') %>
+						<% } %>
+							<!-- /Header -->
 
-	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Agregar productos</h2>
-			</div>
-			<!-- Show the "ultimos" products -->
-			<form class="form" action="/product/agregarProducto" method="POST">
-				<div>
-					<label class="form-label">Ingrese el nombre de la imagen</label>
-					<input id="urlImagen" class="form-input" type="text" name="urlImagen" placeholder="Url Imagen" />
-				</div>
-			
-				<br>
-			
-				<div>
-					<label class="form-label">Ingrese el nombre del producto</label>
-					<input id="nombre" class="form-input" type="text" name="nombre" placeholder="Nombre" />
-				</div>
-			
-				<br>
-			
-				<div>
-					<label class="form-label">Ingrese la descripción del producto</label>
-					<input id="descripcion" class="form-input" type="text" name="descripcion" placeholder="Descripción"/>
-				</div>
-			
-				<br>
-			
-				<button type="submit" class="form-input">Agregar</button>
-			</form>
-	</div>
+							<!-- Novedades -->
+							<div class="container products-wrapper">
+								<div class="row">
+									<div class="col-12">
+										<h2 class="products-title">Agregar productos</h2>
+									</div>
+									<!-- Show the "ultimos" products -->
+									<form class="form" action="/product/agregarProducto" method="POST">
+										<div>
+											<label class="form-label">Ingrese el nombre de la imagen</label>
+											<input id="urlImagen" class="form-input" type="text" name="urlImagen"
+												placeholder="Url Imagen" />
+										</div>
 
-	<!-- footer -->
-	<%- include('partials/footer.ejs')  %>
-	<!-- /footer -->
-</body>
+										<br>
+
+										<div>
+											<label class="form-label">Ingrese el nombre del producto</label>
+											<input id="nombre" class="form-input" type="text" name="nombre"
+												placeholder="Nombre" />
+										</div>
+
+										<br>
+
+										<div>
+											<label class="form-label">Ingrese la descripción del producto</label>
+											<input id="descripcion" class="form-input" type="text" name="descripcion"
+												placeholder="Descripción" />
+										</div>
+
+										<br>
+
+										<button type="submit" class="form-input">Agregar</button>
+									</form>
+								</div>
+
+								<!-- footer -->
+								<%- include('partials/footer.ejs') %>
+									<!-- /footer -->
+	</body>
 
 </html>
