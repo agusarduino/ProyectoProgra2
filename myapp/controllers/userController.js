@@ -33,7 +33,7 @@ const userController = {
                     }
         
                     form.contrasena = bcryptjs.hashSync(req.body.contrasena, 10);
-                    
+
                     return db.Usuario.create(form);  
                 })
                 .then(function () {
@@ -145,16 +145,12 @@ const userController = {
         .catch(function (err) {
             console.log(err);    
         }) 
-    }, 
-
-    
-    
+    },
     logout: (req, res) => {
         req.session.destroy()
         return res.redirect("/");
-    }
+    },
 
-    /*
     profile: function (req, res) {
         let id = req.params.id;
     
@@ -167,7 +163,7 @@ const userController = {
         .catch(function (err) {
             console.log(err);
         });
-    }*/
+    }
 }
 
 module.exports = userController;
