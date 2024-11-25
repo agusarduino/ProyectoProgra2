@@ -66,7 +66,6 @@ const userController = {
                 let check = bcryptjs.compareSync(form.contrasena,result.contrasena) 
                 if (check) {
                     req.session.user = result.dataValues; 
-                    
                     return res.redirect("/");
                 } else{
                     return res.send("La contraseña es incorrecta") 

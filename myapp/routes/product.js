@@ -10,7 +10,7 @@ router.get('/busqueda', productController.busqueda);
 
 router.get('/agregarProducto', productController.createForm);
 
-router.get('/agregarProducto', productController.saveForm);
+router.post('/agregarProducto', productController.saveForm);
 
 
 

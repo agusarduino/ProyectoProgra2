@@ -10,7 +10,7 @@ const productController = {
 
         let filtro = {
             include: [
-                {association: 'usuario'}
+                { association: 'usuario' }
             ]
         };
 
@@ -54,16 +54,17 @@ const productController = {
     },
     saveForm: (req, res) => {
         let form = req.body;
+        form.id_usuario = req.session.user.id;
 
         let filtro = {
             where: {
                 id: form.id
             }
-        }
+        };
 
-        producto.update(form, filtro)
+        producto.create(form, filtro)
             .then((result) => {
-                return res.redirect("/detalleproducto/" + form.id)
+                return res.redirect("/")
             }).catch((err) => {
                 return console.log(err);
 
