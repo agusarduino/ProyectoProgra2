@@ -8,6 +8,7 @@ const session = require('express-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productRouter = require('./routes/product');
+const { log } = require('console');
 
 var app = express();
 
@@ -30,6 +31,10 @@ app.use(session({
 app.use(function(req, res, next){
   if (req.session.user != undefined) {
     res.locals.user = req.session.user;
+    console.log("-----------------------------");
+    
+    console.log(res.locals.user);
+    
   };
 
   return next()
