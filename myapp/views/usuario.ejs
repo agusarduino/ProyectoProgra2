@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Include Head -->
+<%- include('partials/head.ejs')  %>
+<body>
+    <!-- Header -->
+	<% if (locals.user != undefined) { %>
+		<%- include('./partials/headerLogueado') %>
+	<% } else { %>
+		<%- include('./partials/header') %>
+	<% } %>
+	<!-- /Header -->
+    
+    <h1> Perfil </h1>
+    
+
+
+    <!-- footer -->
+	<%- include('partials/footer.ejs')  %>
+	<!-- /footer -->
+</body>
+</html>

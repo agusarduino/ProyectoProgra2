@@ -26,7 +26,11 @@ const indexController = {
     detalle: (req, res) => {
         let productoEncontradoId = req.params.id;
 
-        producto.findByPk(productoEncontradoId)
+        let filtro = {include: [
+            { association: 'usuario' }
+        ]};
+
+        producto.findByPk(productoEncontradoId, filtro)
             .then((producto) => {
                 return res.render('product', { producto: producto })
             })
@@ -54,6 +58,10 @@ const indexController = {
 
     },
     createForm: (req, res) => {
+        if (req.session.user != undefined) {
+            return res.redirect("/");
+        };
+
         let id = req.query.id;
 
         producto.findByPk(id)

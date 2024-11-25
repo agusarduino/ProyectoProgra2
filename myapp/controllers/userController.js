@@ -89,12 +89,12 @@ const userController = {
             include: [{ association: "productos" }]
         })
         .then(function (results) {
-            return res.render("profile", { lista: results });
+            return res.render("usuario", { results: results });
         })
         .catch(function (err) {
             console.log(err);
         });
-    }
-}
+    },
+};
 
 module.exports = userController;

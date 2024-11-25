@@ -12,8 +12,9 @@ router.get('/register', userController.register);
 router.post('/register', userController.results);
 
 router.get('/login', userController.login);
-router.post('/login', userController.loginUser)
+router.post('/login', userController.loginUser);
 
+router.get('/perfil/:idUsuario', userController.profile);
 
 router.get("/logout", userController.logout);
 
