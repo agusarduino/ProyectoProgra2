@@ -70,11 +70,11 @@ const userController = {
                 } else if (usuario != null) {
                     return res.render('registro', { title: 'Registración', error: true, message: 'Este nombre de usuario o el email ya existe. Elije otro.' });
                 } else if (usuario == null) {
-                    let password = bcrypt.hashSync(req.body.password, 10);
+                    let password = bcrypt.hashSync(req.body.contrasena, 10);
 
                     db.Usuario.create({
-                        nombre: req.body.usuario,
-                        email: req.body.correo,
+                        nombre: req.body.nombre,
+                        email: req.body.email,
                         password: password,
                     })
                         .then(function (data) {

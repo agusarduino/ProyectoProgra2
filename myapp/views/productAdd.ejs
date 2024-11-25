@@ -32,10 +32,31 @@
 				<h2 class="products-title">Agregar productos</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> //////////////////////////////// <br>
-				Eliminá está etiqueta h2 y creá en su lugar el formulario para agregar productos al catálogo <br>
-				////////////////</h2>
-
+			<form class="form" action="/agregarProducto" method="POST">
+				<div>
+					<label class="form-label">Ingrese el nombre de la imagen</label>
+					<input id="urlImagen" class="form-input" type="text" name="urlImagen" placeholder="Url Imagen" />
+				</div>
+			
+				<br>
+			
+				<div>
+					<label class="form-label">Ingrese el nombre del producto</label>
+					<input id="nombre" class="form-input" type="text" name="nombre" placeholder="Nombre" />
+				</div>
+			
+				<br>
+			
+				<div>
+					<label class="form-label">Ingrese la descripción del producto</label>
+					<input id="descripcion" class="form-input" type="text" name="descripcion" placeholder="Descripción"/>
+				</div>
+			
+				<br>
+			
+				<button type="submit" class="form-input">Agregar</button>
+			</form>
+	</div>
 
 	<!-- footer -->
 	<%- include('partials/footer.ejs')  %>
