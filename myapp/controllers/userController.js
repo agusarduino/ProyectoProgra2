@@ -21,7 +21,7 @@ const userController = {
                 return res.send('El campo "email" no puede estar vacío.'); 
             } else if (!form.contrasena) {
                 return res.send('El campo "contraseña" no puede estar vacío.'); 
-            } else if (!form.user) {
+            } else if (!form.nombre) {
                 return res.send('El campo "nombre" no puede estar vacío.'); 
             }
         
@@ -83,6 +83,9 @@ const userController = {
     },
 
     profile: function (req, res) {
+        if (req.session.user != undefined) {
+            return res.redirect('/')
+        }
         let id = req.params.id;
     
         db.Usuario.findByPk(id, {

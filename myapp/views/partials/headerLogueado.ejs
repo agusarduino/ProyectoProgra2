@@ -35,14 +35,17 @@
 
             <ul class="right-navbar">
                 <li>
-                    Nombre del usuario <i class="fas fa-user"></i>
+                    <a href="/users/perfil/<% locals.user.id %>">
+                     <%= locals.user.nombre %>    <i class="fas fa-user"></i>
+                   </a>
                 </li>
-                <li>
-                    <form action="" method="post">
+                <li>  
+                    <form action="/users/logout" method="post">
                         <button class="logout" type="submit">
                             Cerrar sesión <i class="fas fa-sign-in-alt"></i>
                         </button>
                     </form>
+               
                 </li>
             </ul>
         </nav>
