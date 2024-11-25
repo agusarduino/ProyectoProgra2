@@ -5,8 +5,8 @@ const op = db.Sequelize.Op;
 
 const userController = {
     register: (req, res) => {
-        if (req.session.usuarioLogueado != undefined) {
-            return res.redirect("/");
+        if (req.session.user != undefined) {
+            return res.redirect('/')
         }
         if (req.query.error) {
             return res.render('register', { title: 'Registración', error: true, message: 'El nombre de usuario o email ya existe' });
@@ -46,81 +46,12 @@ const userController = {
         },
     
 
-
-
-
-
-
-
-
-
-
-        /* let qs = req.query.email; 
-
-        let form = req.body;
-        let pass = bcryptjs.hashSync(form.contrasena, 10);
-
-        form.contrasena = pass;
-
-        db.Usuario.create(form)
-            .then((result) => {
-                return res.redirect("/users/login")
-            })
-            .catch((err) => {
-                return console.log(err);
-            });
-    },
-    registroSubmit: function (req, res) {
-        if (req.session.usuarioLogueado != undefined) {
-            return res.redirect("/");
-        }
-        db.Usuario.findOne({
-            where: {
-                [op.or]: [
-                    { email: req.body.email },
-                    { nombre: req.body.nombre }
-                ]
-            }
-        })
-            .then(function (usuario) {
-                if (req.body.email == "") {
-                    res.render('registro', { title: 'Registración', error: true, message: 'El email no puede estar vacio' });
-                } else if (req.body.contrasena == "") {
-                    return res.render('registro', { title: 'Registración', error: true, message: 'La contraseña no puede estar vacia' });
-                } else if (usuario != null) {
-                    return res.render('registro', { title: 'Registración', error: true, message: 'Este nombre de usuario o el email ya existe. Elije otro.' });
-                } else if (usuario == null) {
-<<<<<<< HEAD
-                    let password = bcrypt.hashSync(req.body.contrasena, 10);
-
-                    db.Usuario.create({
-                        nombre: req.body.nombre,
-                        email: req.body.email,
-                        password: password,
-=======
-                    let contrasena = bcrypt.hashSync(req.body.contrasena, 10);
-
-                    db.Usuario.create({
-                        nombre: req.body.usuario,
-                        email: req.body.correo,
-                        contrasena: contrasena,
->>>>>>> 9c002e35da3ff19e75f02c85a28f168c08361b0d
-                    })
-                        .then(function (data) {
-                            console.log(data)
-                            res.redirect('/login')
-                        })
-                } else {
-                    return res.redirect('/usuario/registro?error=true');
-                }
-
-            })
-            .catch(function (error) {
-                console.log(error);
-            })*/
-
     login: (req, res) => {
+        if (req.session.user != undefined) {
+            return res.redirect('/')
+          };
         return res.render("login")
+
     },
     loginUser: (req, res) => {
         let form = req.body;
