@@ -83,13 +83,15 @@ const userController = {
     },
 
     profile: function (req, res) {
-        let id = req.params.id;
-    
-        db.Usuario.findByPk(id, {
+        let id = req.params.idUsuario;
+
+        let filtro = {
             include: [{ association: "productos" }]
-        })
+        }; 
+        
+        db.Usuario.findByPk(id,filtro)
         .then(function (results) {
-            return res.render("usuario", { results: results });
+            return res.render("profile", { results: results });
         })
         .catch(function (err) {
             console.log(err);

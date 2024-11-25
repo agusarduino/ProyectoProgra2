@@ -8,7 +8,13 @@ const productController = {
     detalle: (req, res) => {
         let productoEncontradoId = req.params.id;
 
-        producto.findByPk(productoEncontradoId)
+        let filtro = {
+            include: [
+                {association: 'usuario'}
+            ]
+        };
+
+        producto.findByPk(productoEncontradoId, filtro)
             .then((producto) => {
                 return res.render('product', { producto: producto })
             })
