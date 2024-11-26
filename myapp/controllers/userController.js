@@ -82,10 +82,6 @@ const userController = {
     },
 
     profile: function (req, res) {
-        if (req.session.user != undefined) {
-            return res.redirect('/')
-        }
-
         let id = req.params.idUsuario;
         
 
