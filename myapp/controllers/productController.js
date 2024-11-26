@@ -31,7 +31,10 @@ const productController = {
             ],
             order: [
                 ['createdAt', 'DESC']
-            ]
+            ],
+            include: [
+                { association: 'usuario' }
+            ] 
         })
             .then((resultados) => {
                 return res.render('searchResults', { producto: resultados })
