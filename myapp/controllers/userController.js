@@ -86,9 +86,12 @@ const userController = {
             return res.redirect('/')
         }
 
-        let id = req.params.id;
+        let id = req.params.idUsuario;
+        
 
-
+        let filtro = {
+            include: [{ association: "productos" }]
+        };
 
         db.Usuario.findByPk(id, filtro)
             .then(function (results) {
@@ -97,7 +100,7 @@ const userController = {
             .catch(function (err) {
                 console.log(err);
             });
-    },
+    }
 };
 
 module.exports = userController;
