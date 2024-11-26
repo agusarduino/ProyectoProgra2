@@ -45,6 +45,9 @@ const productController = {
 
     },
     createForm: (req, res) => {
+        if (req.session.user != undefined) {
+            return res.redirect('/')
+        }
         let id = req.query.id;
 
         producto.findByPk(id)
@@ -56,7 +59,11 @@ const productController = {
             });
     },
     saveForm: (req, res) => {
+        if (req.session.user != undefined) {
+            return res.redirect('/')
+        }
         let form = req.body;
+        
 
         if (!form.urlImagen) {
             return res.send('El campo "URL de la imagen" no puede estar vacío.');
