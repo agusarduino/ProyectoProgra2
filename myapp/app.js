@@ -7,7 +7,7 @@ const session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var productRouter = require('./routes/product');
+var productRouter = require('./routes/product.js');
 const { log } = require('console');
 
 var app = express();
