@@ -83,7 +83,7 @@ const userController = {
 
     profile: function (req, res) {
         let id = req.params.idUsuario;
-        
+
 
         let filtro = {
             include: [{ association: "productos" }]

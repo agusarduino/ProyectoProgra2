@@ -45,9 +45,10 @@ const productController = {
 
     },
     createForm: (req, res) => {
-        if (req.session.user != undefined) {
+        if (req.session.user == undefined) {
             return res.redirect('/')
         }
+        return res.render('productAdd', { producto: producto })
         let id = req.query.id;
 
         producto.findByPk(id)
@@ -59,7 +60,7 @@ const productController = {
             });
     },
     saveForm: (req, res) => {
-        if (req.session.user != undefined) {
+        if (req.session.user == undefined) {
             return res.redirect('/')
         }
         let form = req.body;
